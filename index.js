@@ -11,7 +11,7 @@ module.exports = function (exponentialApiKey) {
                 throw 'Invalid project handle';
             }
             if ((typeof path !== 'string') || path.startsWith('/')) {
-                throw 'url should begin with /';
+                throw 'path should begin with /';
             }
             config ||= {};
             config.method = httpMethod;
