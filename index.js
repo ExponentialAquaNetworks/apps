@@ -15,7 +15,7 @@ module.exports = function (exponentialApiKey) {
             }
             config ||= {};
             config.method = httpMethod;
-            config.url = projectHandle + '.exponential.host' + path;
+            config.url = 'https://' + projectHandle + '.exponential.host' + path;
             config.headers ||= {};
             config.headers.exponential_api_secret = exponentialApiKey;
             return axios(config);
