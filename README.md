@@ -20,13 +20,15 @@ const exponential = require('@exponential/consumer-utils')(process.env.EXPONENTI
 exponential.call('website-screenshot-api', 'GET', '/', {
     params: {
         url: 'blog.exponentialhost.com'
-    }
+    },
+    responseType: 'stream'
 });
+
 exponential.call('tweet-image', 'POST', '/image', {
     headers: {
         "content-type": "application/json"
     },
-    body: {
+    data: {
         "twitterUrl": "https://twitter.com/narendramodi/status/1571162212190007298",
         "imageType": "square",
         "templates": [
@@ -38,7 +40,7 @@ exponential.call('tweet-image', 'POST', '/image', {
 
 ```
 
-## call()
+## call(projectHandle, method, path, config)
 
 Use the call function to call any exponential API as mentioned above. `exponential.call(projectHandle, method, path, config)`. `config` is an object containing optionally additional HTTP headers (`headers`), request body (`data`), and URL params (`params`).
 
@@ -50,4 +52,54 @@ Get your remaining credits
 const exponential = require('@exponential/consumer-utils')(process.env.EXPONENTIAL_API_KEY);
 
 console.log(exponential.credits); // Response: {credits_available: { freeCredits: <integer>, purchasedCredits: <integer> }, balanceCredits: <integer>, cumulativeTotalCredits: <integer>}
+```
+
+## Examples
+
+### Example 1: Call the website screenshot API
+
+```js
+const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+
+const fs = require('fs');
+
+async function callWebsiteScreenshotAPI() {
+    const response = await exponential.call('website-screenshot-api', 'GET', '/', {
+        params: {
+            url: 'blog.exponentialhost.com'
+        },
+        responseType: 'stream'
+    }).catch((e) => { 
+        console.error(e);
+    });
+    response.data.pipe(fs.createWriteStream('/tmp/screenshot.png'));
+    response.data.on('end', () => {
+        console.log('screenshot written to /tmp/screenshot.png');
+    });
+}
+
+callWebsiteScreenshotAPI();
+```
+
+### Example 2 : tweet image API 
+
+```js
+const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+
+exponential.call('tweet-image', 'POST', '/image', {
+    headers: {
+        "content-type": "application/json"
+    },
+    data: {
+        "twitterUrl": "https://twitter.com/narendramodi/status/1571162212190007298",
+        "imageType": "square",
+        "templates": [
+            "crisp"
+        ]
+    }
+}).then((response) => { 
+    console.log(response.data); // response { 'crisp': 'https://i.exponentialhost.com/tweetImages/crisp_1571162212190007298_square.png' }
+}).catch((e) => { 
+    console.error(e);
+});
 ```
