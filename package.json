@@ -1,6 +1,6 @@
 {
   "name": "@exponential/consumer-utils",
-  "version": "1.0.7.1",
+  "version": "1.0.8",
   "description": "Utilities for consumers of the Exponential Host APIs at www.exponentialhost.com / exponential.host",
   "main": "index.js",
   "scripts": {
