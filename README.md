@@ -50,13 +50,15 @@ exponential.call('tweet-image', 'POST', '/image', {
 
 See below ([Examples](#Examples)) for more detailed examples
 
-## call(projectHandle, method, path, config)
+## API
+
+### call(projectHandle, method, path, config)
 
 Use the call function to call any exponential API as mentioned above. `exponential.call(projectHandle, method, path, config)`. `config` is an object containing optionally additional HTTP headers (`headers`), request body (`data`), URL params (`params`), and other optional axios configurations (https://github.com/axios/axios#request-config).
 
 Response is an axios promise (https://github.com/axios/axios#response-schema).
 
-## credits()
+### credits()
 
 Get your remaining credits
 
