@@ -26,17 +26,7 @@ npm install --save @exponential/consumer-utils
 ```js
 const exponential = require('@exponential/consumer-utils')(process.env.EXPONENTIAL_API_KEY);
 
-exponential.call('website-screenshot-api', 'GET', '/', {
-    params: {
-        url: 'blog.exponentialhost.com'
-    },
-    responseType: 'stream'
-});
-
-exponential.call('tweet-image', 'POST', '/image', {
-    headers: {
-        "content-type": "application/json"
-    },
+exponential.api.tweetImage.postImage({
     data: {
         "twitterUrl": "https://twitter.com/narendramodi/status/1571162212190007298",
         "imageType": "square",
@@ -44,13 +34,20 @@ exponential.call('tweet-image', 'POST', '/image', {
             "crisp"
         ]
     }
+}).then((response) => { 
+    console.log(response.data);
+}).catch((e) => { 
+    console.error(e);
 });
-
 ```
 
 See below ([Examples](#Examples)) for more detailed examples
 
 ## API
+
+### api.\<project_name\>.\<function\>
+
+Use the `exponential.api.<project_name>.<function_name>` methods to make the API calls. See below ([Examples](#Examples)) for detailed examples for how to use it.
 
 ### call(projectHandle, method, path, config)
 
@@ -72,9 +69,32 @@ console.log(exponential.credits); // Response: {credits_available: { freeCredits
 
 ### Example 1: Call the website screenshot API
 
+#### Using the API interface
 ```js
 const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+const fs = require('fs');
 
+async function callWebsiteScreenshotAPI() {
+    const response = await exponential.api.websiteScreenshotApi.get({
+        params: {
+            url: 'blog.exponentialhost.com'
+        },
+        responseType: 'stream'
+    }).catch((e) => { 
+        console.error(e);
+    });
+    response.data.pipe(fs.createWriteStream('/tmp/screenshot.png'));
+    response.data.on('end', () => {
+        console.log('screenshot written to /tmp/screenshot.png');
+    });
+}
+
+callWebsiteScreenshotAPI();
+```
+
+#### Using call method
+```js
+const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
 const fs = require('fs');
 
 async function callWebsiteScreenshotAPI() {
@@ -96,6 +116,27 @@ callWebsiteScreenshotAPI();
 ```
 
 ### Example 2 : tweet image API 
+
+#### Using the API interface
+
+```js
+const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+exponential.api.tweetImage.postImage({
+    data: {
+        "twitterUrl": "https://twitter.com/narendramodi/status/1571162212190007298",
+        "imageType": "square",
+        "templates": [
+            "crisp"
+        ]
+    }
+}).then((response) => { 
+    console.log(response.data);
+}).catch((e) => { 
+    console.error(e);
+});
+```
+
+#### Using call method
 
 ```js
 const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
