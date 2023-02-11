@@ -10,7 +10,7 @@ module.exports = function (exponentialApiKey) {
             if ((typeof projectHandle !== 'string') || projectHandle.match(/^[a-z0-9](-?[a-z0-9])*$/) === null) {
                 throw 'Invalid project handle';
             }
-            if ((typeof path !== 'string') || path.startsWith('/')) {
+            if ((typeof path !== 'string') || !path.startsWith('/')) {
                 throw 'path should begin with /';
             }
             config ||= {};
