@@ -1,0 +1,1 @@
+console.log("test running custom build script on github build");
