@@ -6,13 +6,22 @@
 <a href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fgithub.com%2FExponential-Hosting%2Fconsumer-utils"><img src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FExponential-Hosting%2Fconsumer-utils"></a>
 
 
-## Installation:
-
-```
-npm install @exponential/consumer-utils
-```
-
 ## Quick Start:
+
+### Get the API key
+Login at https://www.exponentialhost.com/ and get your API key at https://www.exponentialhost.com/my-apps. Put your API key in EXPONENTIAL_API_KEY environment variable.
+
+```bash
+export EXPONENTIAL_API_KEY=<your-exponential-api-key>
+```
+
+### Installation:
+
+```
+npm install --save @exponential/consumer-utils
+```
+
+### Start calling the exponential APIs
 
 ```js
 const exponential = require('@exponential/consumer-utils')(process.env.EXPONENTIAL_API_KEY);
@@ -37,8 +46,9 @@ exponential.call('tweet-image', 'POST', '/image', {
     }
 });
 
-
 ```
+
+See below ([Examples](#Examples)) for more detailed examples
 
 ## call(projectHandle, method, path, config)
 
