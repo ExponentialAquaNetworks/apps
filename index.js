@@ -1,4 +1,5 @@
 const axios = require("axios");
+const api = require("./api.js");
 
 module.exports = function (exponentialApiKey) {
     if (typeof exponentialApiKey !== 'string') { 
@@ -31,6 +32,7 @@ module.exports = function (exponentialApiKey) {
 
             console.log(creditsResponse.data);
             return creditsResponse.data;
-        }
+        },
+        api
     };
 }
