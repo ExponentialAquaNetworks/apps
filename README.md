@@ -1,9 +1,9 @@
-# consumer-utils
+# apps
 
 ---
-<a href="https://github.com/Exponential-Hosting/utils/issues"><img src="https://img.shields.io/github/issues/Exponential-Hosting/consumer-utils"></a>
-<a href="https://github.com/Exponential-Hosting/utils/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Exponential-Hosting/consumer-utils"></a>
-<a href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fgithub.com%2FExponential-Hosting%2Fconsumer-utils"><img src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FExponential-Hosting%2Fconsumer-utils"></a>
+<a href="https://github.com/Exponential-Hosting/utils/issues"><img src="https://img.shields.io/github/issues/Exponential-Hosting/apps"></a>
+<a href="https://github.com/Exponential-Hosting/utils/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Exponential-Hosting/apps"></a>
+<a href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fgithub.com%2FExponential-Hosting%2Fapps"><img src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FExponential-Hosting%2Fapps"></a>
 
 
 ## Quick Start:
@@ -18,13 +18,13 @@ export EXPONENTIAL_API_KEY=<your-exponential-api-key>
 ### Installation:
 
 ```
-npm install --save @exponential/consumer-utils
+npm install --save @exponential/apps
 ```
 
 ### Start calling the exponential APIs
 
 ```js
-const exponential = require('@exponential/consumer-utils')(process.env.EXPONENTIAL_API_KEY);
+const exponential = require('@exponential/apps')(process.env.EXPONENTIAL_API_KEY);
 
 exponential.api.tweetImage.postImage({
     data: {
@@ -60,7 +60,7 @@ Response is an axios promise (https://github.com/axios/axios#response-schema).
 Get your remaining credits
 
 ```js
-const exponential = require('@exponential/consumer-utils')(process.env.EXPONENTIAL_API_KEY);
+const exponential = require('@exponential/apps')(process.env.EXPONENTIAL_API_KEY);
 
 console.log(exponential.credits); // Response: {credits_available: { freeCredits: <integer>, purchasedCredits: <integer> }, balanceCredits: <integer>, cumulativeTotalCredits: <integer>}
 ```
@@ -71,7 +71,7 @@ console.log(exponential.credits); // Response: {credits_available: { freeCredits
 
 #### Using the API interface
 ```js
-const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+const exponential = require("@exponential/apps")(process.env.EXPONENTIAL_API_KEY);
 const fs = require('fs');
 
 async function callWebsiteScreenshotAPI() {
@@ -94,7 +94,7 @@ callWebsiteScreenshotAPI();
 
 #### Using call method
 ```js
-const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+const exponential = require("@exponential/apps")(process.env.EXPONENTIAL_API_KEY);
 const fs = require('fs');
 
 async function callWebsiteScreenshotAPI() {
@@ -120,7 +120,7 @@ callWebsiteScreenshotAPI();
 #### Using the API interface
 
 ```js
-const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+const exponential = require("@exponential/apps")(process.env.EXPONENTIAL_API_KEY);
 exponential.api.tweetImage.postImage({
     data: {
         "twitterUrl": "https://twitter.com/narendramodi/status/1571162212190007298",
@@ -139,7 +139,7 @@ exponential.api.tweetImage.postImage({
 #### Using call method
 
 ```js
-const exponential = require("@exponential/consumer-utils")(process.env.EXPONENTIAL_API_KEY);
+const exponential = require("@exponential/apps")(process.env.EXPONENTIAL_API_KEY);
 
 exponential.call('tweet-image', 'POST', '/image', {
     headers: {
