@@ -1,6 +1,6 @@
 {
   "name": "@exponential/apps",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Utilities for consumers of the Exponential Host APIs at www.exponentialhost.com / exponential.host",
   "main": "index.js",
   "scripts": {
