@@ -1,26 +1,26 @@
 {
   "name": "@exponential/apps",
-  "version": "1.1.2",
-  "description": "Utilities for consumers of the Exponential Host APIs at www.exponentialhost.com / exponential.host",
+  "version": "1.1.3",
+  "description": "Utilities for consumers of the Datacloud APIs at app.datacloud.sh / datacloud.sh",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Exponential-Hosting/apps.git"
+    "url": "git+ssh://git@github.com/ExponentialAquaNetworks/apps.git"
   },
   "keywords": [
-    "Exponential",
+    "Datacloud",
     "auth",
     "integration"
   ],
   "author": "dev@exponentialhost.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Exponential-Hosting/apps/issues"
+    "url": "https://github.com/ExponentialAquaNetworks/apps/issues"
   },
-  "homepage": "https://github.com/Exponential-Hosting/apps#readme",
+  "homepage": "https://github.com/ExponentialAquaNetworks/apps#readme",
   "dependencies": {
     "async": "^3.2.4",
     "axios": "^1.2.5"

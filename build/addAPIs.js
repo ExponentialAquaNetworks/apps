@@ -5,7 +5,7 @@ const fs = require("fs");
 console.log("Running script to generate API functions");
 
 async function getProjects() {
-    const response = await axios("https://www.exponentialhost.com/api/allProjects?projection=apiDoc,handle&pageSize=500&page=1").catch((e) => {
+    const response = await axios("https://app.datacloud.sh/api/allProjects?projection=apiDoc,handle&pageSize=500&page=1").catch((e) => {
         throw e;
     });
     return response.data.data;
@@ -56,7 +56,7 @@ async function addAPIs() {
 
     let apisText = "module.exports = function (apiCall) { \n    return {\n";
     projects.forEach((project) => {
-        apisText += `        '${project.handleCamelCase}': {\n`; 
+        apisText += `        '${project.handleCamelCase}': {\n`;
         project.functions.forEach((func) => {
             apisText += `            ${func.name}: (config) => {\n`;
             if (func.consumes) {

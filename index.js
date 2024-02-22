@@ -1,9 +1,9 @@
 const axios = require("axios");
 const api = require("./api.js");
 
-module.exports = function (exponentialApiKey) {
-    if (typeof exponentialApiKey !== 'string') { 
-        throw 'Please pass a valid Exponential API key';
+module.exports = function (datacloudApiKey) {
+    if (typeof datacloudApiKey !== 'string') {
+        throw 'Please pass a valid Datacloud API key';
     }
 
     async function apiCall(projectHandle, httpMethod, path, config) {
@@ -15,9 +15,9 @@ module.exports = function (exponentialApiKey) {
         }
         config ||= {};
         config.method = httpMethod;
-        config.url = 'https://' + projectHandle + '.exponential.host' + path;
+        config.url = 'https://' + projectHandle + '.datacloud.sh' + path;
         config.headers ||= {};
-        config.headers.exponential_api_secret = exponentialApiKey;
+        config.headers.datacloud_api_secret = datacloudApiKey;
         return axios(config);
     }
 
@@ -26,9 +26,9 @@ module.exports = function (exponentialApiKey) {
         credits: async () => {
             const creditsResponse = await axios({
                 method: 'GET',
-                url: 'https://www.exponentialhost.com/api/consumer/credits',
+                url: 'https://app.datacloud.sh/api/consumer/credits',
                 headers: {
-                    exponential_api_secret: exponentialApiKey
+                    datacloud_api_secret: datacloudApiKey
                 }
             });
 
