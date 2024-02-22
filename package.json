@@ -23,6 +23,6 @@
   "homepage": "https://github.com/ExponentialAquaNetworks/apps#readme",
   "dependencies": {
     "async": "^3.2.4",
-    "axios": "^1.2.5"
+    "axios": "^1.6.0"
   }
 }
